@@ -15,6 +15,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
+
 def get_service(hass, config, discovery_info=None):
     return AlertOverNotificationService(config[CONF_FROM_SOURCE])
 
