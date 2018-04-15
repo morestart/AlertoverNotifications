@@ -17,7 +17,7 @@
     3. 创建并管理你所在组织的发送源。在发送源列表添加组织中的发送源，确定后可以获取发送源对应ID，作为source用于代码中发送
 
     ![图片](https://www.alertover.com/static/imgs/pages/pic03.png)
-    
+
     4. 创建并管理你所在组织的接收组。receiver可以为用户ID，可以为接收组ID，在接收组列表管理你的接收组
 
     ![图片](https://www.alertover.com/static/imgs/pages/pic04.png)

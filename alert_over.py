@@ -3,7 +3,8 @@ import logging
 
 import voluptuous as vol
 
-from homeassistant.components.notify import (ATTR_TARGET, ATTR_TITLE, PLATFORM_SCHEMA, BaseNotificationService)
+from homeassistant.components.notify import (
+    ATTR_DATA, ATTR_MESSAGE, ATTR_TARGET, ATTR_TITLE, PLATFORM_SCHEMA, BaseNotificationService)
 import homeassistant.helpers.config_validation as cv
 
 _LOGGER = logging.getLogger(__name__)
@@ -13,7 +14,6 @@ CONF_FROM_SOURCE = "from_source"
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_FROM_SOURCE): cv.string,
 })
-
 
 
 def get_service(hass, config, discovery_info=None):
@@ -26,11 +26,12 @@ class AlertOverNotificationService(BaseNotificationService):
 
     def send_message(self, message="", **kwargs):
         receivers = kwargs.get(ATTR_TARGET)
+        # data_m = kwargs.get(ATTR_MESSAGE)
         title = kwargs.get(ATTR_TITLE)
         try:
             for receiver in receivers:
                 _LOGGER.info("已发送")
-
+                # _LOGGER.info(self.from_source)
                 data = {
                     "source": self.from_source,
                     "receiver": receiver,
