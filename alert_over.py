@@ -4,7 +4,7 @@ import logging
 import voluptuous as vol
 
 from homeassistant.components.notify import (
-    ATTR_DATA, ATTR_MESSAGE, ATTR_TARGET, ATTR_TITLE, PLATFORM_SCHEMA, BaseNotificationService)
+    ATTR_TARGET, ATTR_TITLE, PLATFORM_SCHEMA, BaseNotificationService)
 import homeassistant.helpers.config_validation as cv
 
 _LOGGER = logging.getLogger(__name__)
