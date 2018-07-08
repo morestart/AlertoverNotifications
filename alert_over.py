@@ -6,6 +6,9 @@ import voluptuous as vol
 from homeassistant.components.notify import (
     ATTR_TARGET, ATTR_TITLE, PLATFORM_SCHEMA, BaseNotificationService)
 import homeassistant.helpers.config_validation as cv
+from requests.exceptions import (
+    ConnectionError as ConnectError, HTTPError, Timeout)
+
 
 _LOGGER = logging.getLogger(__name__)
 CONF_FROM_SOURCE = "from_source"
@@ -44,5 +47,5 @@ class AlertOverNotificationService(BaseNotificationService):
                     data=data
                 )
 
-        except ConnectionError:
-            _LOGGER.error("连接失败")
+        except (ConnectError, HTTPError, Timeout, ValueError) as error:
+            _LOGGER.error("连接失败,ERROR:" + error)
