@@ -33,19 +33,21 @@ notify:
     from_source: 发送人密钥
 ```
 
-### 自动化
+### 举个🌰
 
 ```yaml
-- alias: weather publish
+- alias: weather alertover
   trigger:
     at: '6:30'
     platform: time
   action:
     service: notify.my_notify
     data:
-      title: 早安
-      message: 'hello'
-
-      target: 接收信息人密钥
+      title: 早上好
+      message: 最高温度:{{states("sensor.heweather_tmp_max")}}， 最低温度:{{states("sensor.heweather_tmp_min")}}，
+        今日穿衣建议:{{states.sensor.heweather_drsg.attributes.生活建议}}
+      target:
+        - xxxxx
+        - xxxx
 ```
 
