@@ -24,17 +24,16 @@ def get_service(hass, config, discovery_info=None):
 
 
 class AlertOverNotificationService(BaseNotificationService):
+
     def __init__(self, from_source):
         self.from_source = from_source
 
     def send_message(self, message="", **kwargs):
         receivers = kwargs.get(ATTR_TARGET)
-        # data_m = kwargs.get(ATTR_MESSAGE)
         title = kwargs.get(ATTR_TITLE)
         try:
             for receiver in receivers:
                 _LOGGER.info("已发送")
-                # _LOGGER.info(self.from_source)
                 data = {
                     "source": self.from_source,
                     "receiver": receiver,
