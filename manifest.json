@@ -1,0 +1,8 @@
+{
+  "domain": "alert_over_notifications",
+  "name": "alert_over_notifications",
+  "documentation": "https://www.hachina.io/6265.html#comments",
+  "requirements": ["requests"],
+  "codeowners": [],
+  "dependencies": []
+}
