@@ -10,7 +10,7 @@ from requests.exceptions import (
     ConnectionError as ConnectError, HTTPError, Timeout)
 
 
-_LOGGER = logging.getLogger(__name__)
+_logging = logging.getlogging(__name__)
 CONF_FROM_SOURCE = "from_source"
 
 
@@ -33,18 +33,18 @@ class AlertOverNotificationService(BaseNotificationService):
         title = kwargs.get(ATTR_TITLE)
         try:
             for receiver in receivers:
-                _LOGGER.info("已发送")
+                _logging.info("已发送")
                 data = {
                     "source": self.from_source,
                     "receiver": receiver,
                     "content": message,
                     "title": title
                 }
-                _LOGGER.info(data)
+                _logging.info(data)
                 requests.post(
                     "https://api.alertover.com/v1/alert",
                     data=data
                 )
 
         except (ConnectError, HTTPError, Timeout, ValueError) as error:
-            _LOGGER.error("连接失败,ERROR:" + error)
+            _logging.error("连接失败,ERROR:" + error)
